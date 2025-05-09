@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!-- Counter container (circular button) -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/counterContainer"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:cardBackgroundColor="@color/blue_500"
+        app:cardCornerRadius="75dp"
+        app:cardElevation="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/counterText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="@android:color/white"
+            android:textSize="48sp"
+            android:textStyle="bold" />
+    </androidx.cardview.widget.CardView>
+
+    <!-- Horizontal guideline at 60% of screen height -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.6" />
+
+    <!-- Minus 10 button -->
+    <Button
+        android:id="@+id/minusTenButton"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:backgroundTint="@color/blue_700"
+        android:text="-10"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/minusFiveButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guideline"
+        app:layout_constraintVertical_bias="0.3" />
+
+    <!-- Minus 5 button -->
+    <Button
+        android:id="@+id/minusFiveButton"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:backgroundTint="@color/blue_500"
+        android:text="-5"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/minusTenButton"
+        app:layout_constraintEnd_toStartOf="@+id/plusFiveButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/minusTenButton"
+        app:layout_constraintTop_toTopOf="@+id/minusTenButton" />
+
+    <!-- Plus 5 button -->
+    <Button
+        android:id="@+id/plusFiveButton"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:backgroundTint="@color/blue_500"
+        android:text="+5"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/minusFiveButton"
+        app:layout_constraintEnd_toStartOf="@+id/plusTenButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/minusFiveButton"
+        app:layout_constraintTop_toTopOf="@+id/minusFiveButton" />
+
+    <!-- Plus 10 button -->
+    <Button
+        android:id="@+id/plusTenButton"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:backgroundTint="@color/blue_700"
+        android:text="+10"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/plusFiveButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/plusFiveButton"
+        app:layout_constraintTop_toTopOf="@+id/plusFiveButton" />
+
+    <!-- Daily Auto Increment Settings at bottom -->
+    <TextView
+        android:id="@+id/dailyIncrementLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Daily Increment at 00:00"
+        android:textColor="@color/blue_700"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/dailyIncrementLayout"
+        app:layout_constraintEnd_toEndOf="@+id/dailyIncrementLayout"
+        app:layout_constraintStart_toStartOf="@+id/dailyIncrementLayout" />
+
+    <LinearLayout
+        android:id="@+id/dailyIncrementLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginBottom="24dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <EditText
+            android:id="@+id/dailyIncrementInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/blue_500"
+            android:hint="Enter amount"
+            android:inputType="number"
+            android:textColorHint="@color/blue_200"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/saveIncrementButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:backgroundTint="@color/blue_accent"
+            android:text="Save"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <!-- Switch for enabling/disabling notifications -->
+    <Switch
+        android:id="@+id/notificationSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:checked="true"
+        android:text="Enable Notifications"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/dailyIncrementLabel"
+        app:layout_constraintEnd_toEndOf="@+id/dailyIncrementLabel"
+        app:layout_constraintStart_toStartOf="@+id/dailyIncrementLabel" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
